@@ -1,97 +1,412 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Notion Templates | irweny</title>
-    <script src="https://gumroad.com/js/gumroad.js"></script>
-    <style>
-        body { font-family: 'Inter', -apple-system, sans-serif; background-color: #fcfcfc; color: #1a1a1a; margin: 0; padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 650px; margin: auto; text-align: left; }
-        h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; color: #000; }
-        .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 40px; }
-        .card { background: #ffffff; border: 1px solid #eaeaea; border-radius: 20px; padding: 25px; margin-bottom: 45px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: 0.3s; }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); border-color: #000; }
-        
-        .image-gallery { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .image-gallery img { width: 100%; border-radius: 12px; border: 1px solid #eee; object-fit: cover; background: #f9f9f9; }
-        
-        h3 { font-size: 1.7rem; margin-top: 0; color: #000; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .section-header { font-weight: 700; margin-top: 20px; display: block; color: #000; font-size: 1rem; }
-        
-        ul { padding-left: 20px; list-style-type: '👉'; margin-top: 8px; }
-        li { margin-bottom: 8px; padding-left: 10px; font-size: 0.95rem; color: #333; }
-        
-        .tag { background: #000; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .btn { display: block; background-color: #000; color: #fff; padding: 18px; text-align: center; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; margin-top: 30px; transition: 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .btn:hover { background-color: #333; transform: scale(1.01); }
-        
-        .meta-info { background: #f8f8f8; padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 0.85rem; border-left: 4px solid #000; }
-        footer { text-align: center; color: #999; font-size: 0.8rem; margin-top: 60px; padding-bottom: 30px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Irweny Notion Studio — Premium Notion Templates</title>
+  <meta name="description" content="Premium Notion templates for finance tracking, gym, and productivity. Mobile-friendly, built for real life."/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --border: #1e1e1e;
+      --text: #e8e8e8;
+      --muted: #666;
+      --blue: #4f8ef7;
+      --purple: #9b6dff;
+      --green: #3dd68c;
+      --accent: #4f8ef7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,142,247,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,142,247,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--blue); top: -200px; left: -200px; }
+    .blob-2 { width: 500px; height: 500px; background: var(--purple); bottom: -100px; right: -100px; }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 90px 24px 60px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1px solid rgba(79,142,247,0.25);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Templates grid */
+    .templates {
+      position: relative;
+      z-index: 10;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 24px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79,142,247,0.3);
+    }
+
+    /* Corner brackets */
+    .card::before, .card::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: var(--blue);
+      border-style: solid;
+      opacity: 0.4;
+      z-index: 2;
+    }
+    .card::before { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+    .card::after  { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      background: #0f0f0f;
+    }
+
+    .card-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-body {
+      padding: 28px;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .tag-finance { color: var(--green); }
+    .tag-gym { color: var(--purple); }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .features li {
+      font-size: 0.83rem;
+      color: #aaa;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .features li::before {
+      content: '—';
+      color: var(--blue);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .price-old {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-left: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .btn-gym {
+      background: var(--purple);
+    }
+
+    /* Mobile tag */
+    .mobile-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7rem;
+      color: var(--green);
+      border: 1px solid rgba(61,214,140,0.2);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 30px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 20px; }
+      .hero { padding: 60px 20px 40px; }
+      .templates { grid-template-columns: 1fr; padding: 16px 16px 60px; }
+      .card-body { padding: 20px; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <span class="tag">Digital Store</span>
-        <h1>Notion Templates</h1>
-        <p class="subtitle">Premium tools to organize your life and business.</p>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
 
-        <div class="card">
-            <div class="image-gallery">
-                <img src="image1.jpg" alt="Financial Tracker Preview">
-            </div>
-            <h3>Ultimate Financial Tracker</h3>
-            <p><strong>Master your finances with ease:</strong></p>
-            <ul>
-                <li>One-Tap Entries: Log income/expenses instantly.</li>
-                <li>Mobile-Optimized: Perfect for on-the-go tracking.</li>
-                <li>Automated Insights: Visual charts for your spending.</li>
-                <li>Multi-Account Support: Manage Bank, Cash & Savings.</li>
-            </ul>
-            <a href="https://irweny.gumroad.com/l/fidisp" class="gumroad-button btn">Buy Financial Tracker</a>
+  <header>
+    <div class="logo">irweny<span>.</span>studio</div>
+    <div class="badge">Notion Templates</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-tag">Premium Digital Products</div>
+    <h1>Tools built for<br/><span>real life</span></h1>
+    <p>Notion templates that actually work — on desktop and mobile. No complexity, just clarity.</p>
+  </section>
+
+  <section class="templates">
+
+    <!-- Finance Template -->
+    <div class="card">
+      <img class="card-image" src="image1.jpg" alt="Ultimate Finance Hub Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+      <div class="card-image-placeholder" style="display:none">💰</div>
+      <div class="card-body">
+        <div class="card-tag tag-finance">Finance</div>
+        <div class="mobile-pill">📱 Mobile-Friendly</div>
+        <h2 class="card-title">Ultimate Finance Hub</h2>
+        <p class="card-desc">Take full control of your money — track expenses, manage multiple accounts, monitor investments, and see your net worth, all in one place.</p>
+        <ul class="features">
+          <li>Multi-account management (Cash, Bank, Credit Card)</li>
+          <li>Investments dashboard — Gold, Crypto, Stocks & more</li>
+          <li>15+ smart spending categories with live totals</li>
+          <li>Monthly expense & income reports</li>
+          <li>Transfers tracker between accounts</li>
+          <li>One-tap mobile entry, no laptop needed</li>
+        </ul>
+        <div class="card-footer">
+          <div>
+            <span class="price">$15</span>
+          </div>
+          <a href="https://irweny.gumroad.com/l/fidisp" class="btn" target="_blank">Get Template →</a>
         </div>
-
-        <div class="card">
-            <div class="image-gallery">
-                <img src="GYM1.jpg.jpg" alt="Gym Template Preview">
-            </div>
-            <h3>Gym Content Creator Pro</h3>
-            
-            <span class="section-header">📋 What's Included:</span>
-            <ul>
-                <li>1 Notion Template (instant duplicate)</li>
-                <li>Pre-built Exercise Library with 70+ exercises</li>
-                <li>Ready-to-use Supplements Tracker with sample data</li>
-            </ul>
-
-            <span class="section-header">⚙️ Requirements:</span>
-            <ul>
-                <li>Free Notion account (no paid plan needed)</li>
-                <li>Works on desktop & mobile</li>
-            </ul>
-
-            <span class="section-header">🚀 How to Use:</span>
-            <ul>
-                <li>Purchase and get the Notion link</li>
-                <li>Click "Duplicate" to add it to your workspace</li>
-                <li>Start tracking your workouts!</li>
-            </ul>
-
-            <div class="meta-info">
-                🌍 <strong>Language:</strong> English<br>
-                📐 <strong>Format:</strong> Notion Database (Gallery + Table views)<br>
-                🔄 <strong>Updates:</strong> Free updates for life<br>
-                💬 <strong>Support:</strong> Message me directly on Gumroad
-            </div>
-
-            <a href="https://irweny.gumroad.com/l/kwwvvh" class="gumroad-button btn">Get it Now — Start Training</a>
-        </div>
-
-        <footer>
-            © 2026 irweny. Powered by GitHub & Gumroad.
-        </footer>
+      </div>
     </div>
+
+    <!-- Gym Template -->
+    <div class="card">
+      <img class="card-image" src="GYM1.jpg.jpg" alt="Gym Content Creator Pro Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+      <div class="card-image-placeholder" style="display:none">💪</div>
+      <div class="card-body">
+        <div class="card-tag tag-gym">Fitness</div>
+        <div class="mobile-pill" style="color: var(--purple); border-color: rgba(155,109,255,0.2);">📱 Mobile-Friendly</div>
+        <h2 class="card-title">Gym Content Creator Pro</h2>
+        <p class="card-desc">Everything you need to track your training — workouts, PRs, supplements, and subscriptions. Built for serious gym-goers.</p>
+        <ul class="features">
+          <li>70+ pre-built exercise library</li>
+          <li>PR tracking with automatic records</li>
+          <li>Supplements tracker with sample data</li>
+          <li>Workout log with split classification</li>
+          <li>Subscription tracker (monthly & session plans)</li>
+          <li>Free Notion account — no paid plan needed</li>
+        </ul>
+        <div class="card-footer">
+          <div>
+            <span class="price" style="color: var(--purple);">$19</span>
+          </div>
+          <a href="https://irweny.gumroad.com/l/kwwvvh" class="btn btn-gym" target="_blank">Get Template →</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 irweny.studio — Powered by GitHub & Gumroad
+  </footer>
 
 </body>
 </html>
